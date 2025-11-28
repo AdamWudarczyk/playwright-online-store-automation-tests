@@ -12,6 +12,7 @@ export class LoginPage {
         this.usernameInput = page.getByPlaceholder('Username');
         this.passwordInput = page.getByPlaceholder('Password');
         this.loginButton = page.getByRole('button', { name: 'Login' });
+        this.errorMessage = page.locator('[data-test="error"]');
     }
 
     async goto() {
@@ -24,7 +25,8 @@ export class LoginPage {
         await this.loginButton.click();
     }
 
-    async assertOnLoginPage() {
-        await expect(this.loginButton).toBeVisible();
+    async getErrorMessage() {
+        return this.errorMessage.textContent();
     }
+
 }
