@@ -2,7 +2,6 @@
   "name": "playwright-online-store-automation-tests",
   "version": "1.0.0",
   "description": "",
-  "main": "",
   "scripts": {},
   "private": true,
   "devDependencies": {
