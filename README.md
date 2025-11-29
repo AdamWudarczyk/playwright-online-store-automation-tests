@@ -33,7 +33,7 @@ playwright-online-store-automation-tests\
 │ ├── smoke\
 │ │ └── smoke-login.spec.js\
 │ └── e2e\
-│ └── e2e-happy-path.spec.js\
+│ └── e2e-checkout-and-cart.js\
 │── /pages\
 │ ├── LoginPage.js\
 │ ├── InventoryPage.js\
