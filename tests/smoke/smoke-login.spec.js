@@ -24,5 +24,16 @@ test.describe('Smoke - Login', () => {
         const error = await loginPage.getErrorMessage();
         expect(error).toContain('Sorry, this user has been locked out');
         });
+    test('SMK-03: invalid credentials show proper error @smoke', async ({ page }) => {
+        const loginPage = new LoginPage(page);
+
+        await loginPage.goto();
+        await loginPage.login(users.validUser.username, 'wrong_password');
+
+        const error = await loginPage.getErrorMessage();
+        expect(error).toContain('Username and password do not match any user');
+    });
+
+
     });
 
