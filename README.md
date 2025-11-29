@@ -7,23 +7,41 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 - Playwright Test Runner
 - Page Object Model (POM)
 - HTML Reports
-- 
+- JSON fixtures
+
 ## Test Coverage
 ### E2E Flow
-- TBD
+| ID | Flow |
+|----|-------|
+| E2E-01 | Full checkout flow with 2 products |
+| E2E-02 | Checkout validation – missing required data |
+
 ### Smoke Tests
-- TBD
+| ID | Name |
+|----|------|
+| SMK-01 | Successful login (valid user) |
+| SMK-02 | Locked-out user cannot login |
+| SMK-03 | Invalid credentials validation |
+| SMK-04 | Empty fields validation |
 
 ## Project Structure
 playwright-online-store-automation-tests\
 │── package.json\
 │── playwright.config.js\
 │── /tests\
+│ ├── smoke/
+│ │ └── smoke-login.spec.js
+│ └── e2e/
+│ └── e2e-happy-path.spec.js
 │── /pages\
+│ ├── LoginPage.js
+│ ├── InventoryPage.js
+│ ├── CartPage.js
+│ └── CheckoutPage.js
 │── /fixtures
+└── users.json
 
 ## How to run tests
-
 Install dependencies:
 ```
 npm install
