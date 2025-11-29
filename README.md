@@ -16,6 +16,7 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 | E2E-01 | Full checkout flow with 2 products |
 | E2E-02 | Checkout validation – missing required data |
 | E2E-03 | Remove item from cart |
+| E2E-04 | Sorting products |
 
 ### Smoke Tests
 | ID | Name |
@@ -33,7 +34,7 @@ playwright-online-store-automation-tests\
 │ ├── smoke\
 │ │ └── smoke-login.spec.js\
 │ └── e2e\
-│ └── e2e-checkout-and-cart.js\
+│ └── e2e-checkout-and-cart.spec.js\
 │── /pages\
 │ ├── LoginPage.js\
 │ ├── InventoryPage.js\
@@ -43,22 +44,45 @@ playwright-online-store-automation-tests\
 └── users.json
 
 ## How to run tests
-Install dependencies:
+Install dependencies
 ```
 npm install
 ```
-
-Run all tests:
+Run all tests
 ```
 npx playwright test
 ```
-
-Generate HTML report:
+Run a single test file
+```
+npx playwright test tests/e2e/e2e-cart-checkout.spec.js
+```
+Run Smoke tests only
+```
+npx playwright test --grep @smoke
+```
+Run E2E tests only
+```
+npx playwright test --grep @e2e
+```
+Re-run only failed tests
+```
+npx playwright test --last-failed
+```
+--HELPFUL--
+Run tests in headed mode (browser visible)
+```
+npx playwright test --headed
+```
+Generate HTML report
 ```
 npx playwright show-report
 ```
-## Contents
+Debug mode
+```
+npx playwright test --debug
+```
 
+## Contents
 This project will demonstrate:
 - Page Object Model
 - E2E flow testing
