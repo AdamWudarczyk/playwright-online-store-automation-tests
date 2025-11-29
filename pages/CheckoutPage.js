@@ -10,6 +10,7 @@ export class CheckoutPage {
         this.continueBtn = page.locator('[data-test="continue"]');
         this.finishBtn = page.locator('[data-test="finish"]');
         this.thankYouMessage = page.locator('.complete-header');
+        this.errorMessage = page.locator('[data-test="error"]');
     }
 
     async fillInformation(first, last, postal) {
@@ -26,4 +27,13 @@ export class CheckoutPage {
     async assertOrderFinished() {
         await expect(this.thankYouMessage).toHaveText('Thank you for your order!');
     }
+
+    async getErrorMessage() {
+        return await this.errorMessage.textContent();
+    }
+
+    async continueWithEmptyData() {
+        await this.continueBtn.click();
+    }
+
 }
