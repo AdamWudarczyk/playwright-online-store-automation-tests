@@ -5,6 +5,7 @@ export class CartPage {
         this.page = page;
         this.cartItems = page.locator('.cart_item');
         this.checkoutButton = page.locator('[data-test="checkout"]');
+        this.removeButtons = page.locator('[data-test^="remove-"]');
     }
 
     async countItems() {
@@ -17,5 +18,9 @@ export class CartPage {
 
     async assertCartVisible() {
         await expect(this.cartItems.first()).toBeVisible();
+    }
+
+    async removeItemByIndex(index) {
+        await this.removeButtons.nth(index).click();
     }
 }

@@ -16,18 +16,15 @@ test.describe('E2E - Checkout', () => {
         await loginPage.goto();
         await loginPage.login(users.validUser.username, users.validUser.password);
         await inventory.assertOnInventoryPage();
-
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
 
         await inventory.goToCart();
         await cart.assertCartVisible();
-
         expect(await cart.countItems()).toBe(2);
 
         await cart.goToCheckout();
         await checkout.fillInformation('Adam', 'Tester', '00-001');
-
         await checkout.finishOrder();
         await checkout.assertOrderFinished();
     });
@@ -40,7 +37,6 @@ test.describe('E2E - Checkout', () => {
         await loginPage.goto();
         await loginPage.login(users.validUser.username, users.validUser.password);
         await inventory.assertOnInventoryPage();
-
         await inventory.addProductByIndex(0);
 
         await inventory.goToCart();
@@ -52,4 +48,21 @@ test.describe('E2E - Checkout', () => {
         expect(error).toContain('Error: First Name is required');
     });
 
+    test('E2E-03: remove one item from cart @e2e', async ({ page }) => {
+        const loginPage = new LoginPage(page);
+        const inventory = new InventoryPage(page);
+        const cart = new CartPage(page);
+
+        await loginPage.goto();
+        await loginPage.login(users.validUser.username, users.validUser.password);
+        await inventory.assertOnInventoryPage();
+        await inventory.addProductByIndex(0);
+        await inventory.addProductByIndex(1);
+        await inventory.goToCart();
+        await cart.assertCartVisible();
+        expect(await cart.countItems()).toBe(2);
+
+        await cart.removeItemByIndex(0);
+        expect(await cart.countItems()).toBe(1);
+    });
 });
