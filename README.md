@@ -30,17 +30,17 @@ playwright-online-store-automation-tests\
 │── package.json\
 │── playwright.config.js\
 │── /tests\
-│ ├── smoke/
-│ │ └── smoke-login.spec.js/
-│ └── e2e/
-│ └── e2e-happy-path.spec.js/
+│ ├── smoke\
+│ │ └── smoke-login.spec.js\
+│ └── e2e\
+│ └── e2e-happy-path.spec.js\
 │── /pages\
-│ ├── LoginPage.js/
-│ ├── InventoryPage.js/
-│ ├── CartPage.js/
-│ └── CheckoutPage.js/
-│── /fixtures/
-└── users.json/
+│ ├── LoginPage.js\
+│ ├── InventoryPage.js\
+│ ├── CartPage.js\
+│ └── CheckoutPage.js\
+│── /fixtures\
+└── users.json
 
 ## How to run tests
 Install dependencies:
