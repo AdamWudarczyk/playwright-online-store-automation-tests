@@ -6,7 +6,7 @@ import { CheckoutPage } from '../../pages/CheckoutPage.js';
 import users from '../../fixtures/users.json' with { type: 'json' };
 
 test.describe('E2E - Checkout', () => {
-    test('E2E-01: complete order with 2 items', async ({ page }) => {
+    test('E2E-01: complete order with 2 items @e2e', async ({ page }) => {
 
         const loginPage = new LoginPage(page);
         const inventory = new InventoryPage(page);
