@@ -65,4 +65,24 @@ test.describe('E2E - Checkout', () => {
         await cart.removeItemByIndex(0);
         expect(await cart.countItems()).toBe(1);
     });
+    test('E2E-04: cart badge updates when adding multiple items @e2e', async ({ page }) => {
+        const loginPage = new LoginPage(page);
+        const inventory = new InventoryPage(page);
+        const cart = new CartPage(page);
+
+        await loginPage.goto();
+        await loginPage.login(users.validUser.username, users.validUser.password);
+        await inventory.assertOnInventoryPage();
+
+        await inventory.addProductByIndex(0);
+        await inventory.addProductByIndex(1);
+        await inventory.addProductByIndex(2);
+        const cartBadge = page.locator('.shopping_cart_badge');
+        await expect(cartBadge).toHaveText('3');
+
+        await inventory.goToCart();
+        await cart.assertCartVisible();
+        expect(await cart.countItems()).toBe(3);
+    });
+
 });
