@@ -1,4 +1,4 @@
-# Online Store – Automation Tests (Playwright + JavaScript)
+# Online Store - Playwright E2E & Smoke Tests (JavaScript)
 Automated end-to-end and smoke tests for an online store web application (based on the SauceDemo demo store).
 Project created to practice E2E testing, Page Object Model design, and Playwright workflows.
 
@@ -11,12 +11,12 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 
 ## Test Coverage
 ### E2E Flow
-| ID     | Flow |
-|--------|-------|
-| E2E-01 | Full checkout flow with 2 products |
-| E2E-02 | Checkout validation – missing required data |
-| E2E-03 | Remove item from cart |
-| E2E-04 | Sorting products |
+| ID     | Flow                                        |
+|--------|---------------------------------------------|
+| E2E-01 | Full checkout flow with 2 products          |
+| E2E-02 | Checkout validation (missing required data) |
+| E2E-03 | Remove item from cart                       |
+| E2E-04 | Sorting products                            |
 
 ### Smoke Tests
 | ID | Name |
