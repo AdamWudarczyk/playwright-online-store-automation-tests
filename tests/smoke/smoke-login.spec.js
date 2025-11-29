@@ -33,7 +33,15 @@ test.describe('Smoke - Login', () => {
         const error = await loginPage.getErrorMessage();
         expect(error).toContain('Username and password do not match any user');
     });
+    test('SMK-04: empty credentials show required field error @smoke', async ({ page }) => {
+        const loginPage = new LoginPage(page);
 
+        await loginPage.goto();
+        await loginPage.login('', '');
+
+        const error = await loginPage.getErrorMessage();
+        expect(error).toContain('Username is required');
+    });
 
     });
 
