@@ -44,40 +44,40 @@ playwright-online-store-automation-tests\
 └── users.json
 
 ## How to run tests
-Install dependencies
+**Install dependencies**
 ```bash
 npm install
 ```
-Run all tests
+**Run all tests**
 ```bash
 npx playwright test
 ```
-Run a single test file
+**Run a single test file**
 ```bash
 npx playwright test tests/e2e/e2e-cart-checkout.spec.js
 ```
-Run Smoke tests only
+**Run Smoke tests only**
 ```bash
 npx playwright test --grep @smoke
 ```
-Run E2E tests only
+**Run E2E tests only**
 ```bash
 npx playwright test --grep @e2e
 ```
-Re-run only failed tests
+**Re-run only failed tests**
 ```bash
 npx playwright test --last-failed
 ```
-Run tests in headed mode (browser visible)
+**Run tests in headed mode (browser visible)**
 ```bash
 npx playwright test --headed
 ```
 ### Helpful commands
-Generate HTML report
+**Generate HTML report**
 ```bash
 npx playwright show-report
 ```
-Debug mode
+**Debug mode**
 ```bash
 npx playwright test --debug
 ```
