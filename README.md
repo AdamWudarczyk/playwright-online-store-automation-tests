@@ -68,11 +68,11 @@ Re-run only failed tests
 ```bash
 npx playwright test --last-failed
 ```
-### Helpful commands
 Run tests in headed mode (browser visible)
 ```bash
 npx playwright test --headed
 ```
+### Helpful commands
 Generate HTML report
 ```bash
 npx playwright show-report
@@ -88,4 +88,3 @@ This project will demonstrate:
 - E2E flow testing
 - Smoke testing
 - Selectors & assertions
-- Playwright best practices
