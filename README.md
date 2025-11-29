@@ -11,10 +11,11 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 
 ## Test Coverage
 ### E2E Flow
-| ID | Flow |
-|----|-------|
+| ID     | Flow |
+|--------|-------|
 | E2E-01 | Full checkout flow with 2 products |
 | E2E-02 | Checkout validation – missing required data |
+| E2E-03 | Remove item from cart |
 
 ### Smoke Tests
 | ID | Name |
@@ -30,16 +31,16 @@ playwright-online-store-automation-tests\
 │── playwright.config.js\
 │── /tests\
 │ ├── smoke/
-│ │ └── smoke-login.spec.js
+│ │ └── smoke-login.spec.js/
 │ └── e2e/
-│ └── e2e-happy-path.spec.js
+│ └── e2e-happy-path.spec.js/
 │── /pages\
-│ ├── LoginPage.js
-│ ├── InventoryPage.js
-│ ├── CartPage.js
-│ └── CheckoutPage.js
-│── /fixtures
-└── users.json
+│ ├── LoginPage.js/
+│ ├── InventoryPage.js/
+│ ├── CartPage.js/
+│ └── CheckoutPage.js/
+│── /fixtures/
+└── users.json/
 
 ## How to run tests
 Install dependencies:
