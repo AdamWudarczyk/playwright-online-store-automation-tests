@@ -2,10 +2,16 @@
   "name": "playwright-online-store-automation-tests",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
+  },
   "private": true,
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@types/node": "^24.10.1"
+    "@types/node": "^24.10.1",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.4.3"
   }
 }
