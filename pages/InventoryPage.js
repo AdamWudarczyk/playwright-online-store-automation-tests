@@ -1,4 +1,3 @@
-// pages/InventoryPage.js
 import { expect } from '@playwright/test';
 
 /** @typedef {import('@playwright/test').Page} Page */

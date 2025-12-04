@@ -1,5 +1,3 @@
-import { expect } from '@playwright/test';
-
 /** @typedef {import('@playwright/test').Page} Page */
 
 export class LoginPage {
