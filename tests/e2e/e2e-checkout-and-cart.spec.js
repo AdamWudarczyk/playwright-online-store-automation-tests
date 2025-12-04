@@ -6,16 +6,24 @@ import { CheckoutPage } from '../../pages/CheckoutPage.js';
 import users from '../../fixtures/users.json' with { type: 'json' };
 
 test.describe('E2E - Checkout', () => {
+    let loginPage;
+    let inventory;
+    let cart;
+    let checkout;
+
+    test.beforeEach(async ({ page }) => {
+
+    loginPage = new LoginPage(page);
+    inventory = new InventoryPage(page);
+    cart = new CartPage(page);
+    checkout = new CheckoutPage(page);
+
+    await loginPage.goto();
+    await loginPage.login(users.validUser.username, users.validUser.password);
+     await inventory.assertOnInventoryPage();
+    });
+
     test('E2E-01: complete order with 2 items @e2e', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
-        const inventory = new InventoryPage(page);
-        const cart = new CartPage(page);
-        const checkout = new CheckoutPage(page);
-
-        await loginPage.goto();
-        await loginPage.login(users.validUser.username, users.validUser.password);
-        await inventory.assertOnInventoryPage();
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
 
@@ -29,14 +37,6 @@ test.describe('E2E - Checkout', () => {
         await checkout.assertOrderFinished();
     });
     test('E2E-02: cannot continue checkout with empty required fields @e2e', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const inventory = new InventoryPage(page);
-        const cart = new CartPage(page);
-        const checkout = new CheckoutPage(page);
-
-        await loginPage.goto();
-        await loginPage.login(users.validUser.username, users.validUser.password);
-        await inventory.assertOnInventoryPage();
         await inventory.addProductByIndex(0);
 
         await inventory.goToCart();
@@ -49,13 +49,6 @@ test.describe('E2E - Checkout', () => {
     });
 
     test('E2E-03: remove one item from cart @e2e', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const inventory = new InventoryPage(page);
-        const cart = new CartPage(page);
-
-        await loginPage.goto();
-        await loginPage.login(users.validUser.username, users.validUser.password);
-        await inventory.assertOnInventoryPage();
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
         await inventory.goToCart();
@@ -66,14 +59,6 @@ test.describe('E2E - Checkout', () => {
         expect(await cart.countItems()).toBe(1);
     });
     test('E2E-04: cart badge updates when adding multiple items @e2e', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const inventory = new InventoryPage(page);
-        const cart = new CartPage(page);
-
-        await loginPage.goto();
-        await loginPage.login(users.validUser.username, users.validUser.password);
-        await inventory.assertOnInventoryPage();
-
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
         await inventory.addProductByIndex(2);
