@@ -28,20 +28,23 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 
 ## Project Structure
 playwright-online-store-automation-tests\
-│── package.json\
-│── playwright.config.js\
-│── /tests\
-│ ├── smoke\
-│ │ └── smoke-login.spec.js\
-│ └── e2e\
-│ └── e2e-checkout-and-cart.spec.js\
-│── /pages\
-│ ├── LoginPage.js\
-│ ├── InventoryPage.js\
-│ ├── CartPage.js\
-│ └── CheckoutPage.js\
-│── /fixtures\
-└── users.json
+│── allure-report\
+│── allure-results\
+│── package.json                     # Project dependencies and scripts\
+│── playwright.config.js             # Global Playwright configuration\
+│── tests\
+│ ├── smoke                          # High-level tests verifying main flows\
+│ │ └── smoke-login.spec.js          # Smoke tests for login functionality\
+│ └── e2e \                          # Full end-to-end flows across the app\
+│ └── e2e-checkout-and-cart.spec.js \
+│── pages                           # Page Object Model (POM) classes\
+│ ├── LoginPage.js                   # Actions and selectors for Login page\
+│ ├── InventoryPage.js               # Product listing, sorting, inventory checks\
+│ ├── CartPage.js                    # Cart operations (add/remove/verify)\
+│ └── CheckoutPage.js                # Checkout steps, form filling, validation\
+│── /fixtures                        # Test data used across tests\
+└── users.json                        # Credentials for different user roles
+
 
 ## How to run tests
 **Install dependencies**
@@ -77,6 +80,15 @@ npx playwright test --headed
 ```bash
 npx playwright show-report
 ```
+**Generate Allure report**
+```bash
+npm run allure:report
+```
+**Open report in browser**
+```bash
+npm run allure:open
+```
+
 **Debug mode**
 ```bash
 npx playwright test --debug
@@ -88,3 +100,4 @@ This project will demonstrate:
 - E2E flow testing
 - Smoke testing
 - Selectors & assertions
+- Allure report
