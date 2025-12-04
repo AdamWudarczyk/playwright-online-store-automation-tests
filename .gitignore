@@ -9,4 +9,10 @@ node_modules/
 /playwright/.auth/
 
 # Idea
-/.idea
+.idea/
+
+# Allure
+
+allure-results/
+allure-report/
+test-results/
