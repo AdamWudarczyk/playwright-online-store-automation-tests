@@ -12,18 +12,17 @@ test.describe('E2E - Checkout', () => {
     let checkout;
 
     test.beforeEach(async ({ page }) => {
+        loginPage = new LoginPage(page);
+        inventory = new InventoryPage(page);
+        cart = new CartPage(page);
+        checkout = new CheckoutPage(page);
 
-    loginPage = new LoginPage(page);
-    inventory = new InventoryPage(page);
-    cart = new CartPage(page);
-    checkout = new CheckoutPage(page);
-
-    await loginPage.goto();
-    await loginPage.login(users.validUser.username, users.validUser.password);
-     await inventory.assertOnInventoryPage();
+        await loginPage.goto();
+        await loginPage.login(users.validUser.username, users.validUser.password);
+        await inventory.assertOnInventoryPage();
     });
 
-    test('E2E-01: complete order with 2 items @e2e', async ({ page }) => {
+    test('E2E-01: complete order with 2 items @e2e', async () => {
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
 
@@ -36,7 +35,8 @@ test.describe('E2E - Checkout', () => {
         await checkout.finishOrder();
         await checkout.assertOrderFinished();
     });
-    test('E2E-02: cannot continue checkout with empty required fields @e2e', async ({ page }) => {
+
+    test('E2E-02: cannot continue checkout with empty required fields @e2e', async () => {
         await inventory.addProductByIndex(0);
 
         await inventory.goToCart();
@@ -48,7 +48,7 @@ test.describe('E2E - Checkout', () => {
         expect(error).toContain('Error: First Name is required');
     });
 
-    test('E2E-03: remove one item from cart @e2e', async ({ page }) => {
+    test('E2E-03: remove one item from cart @e2e', async () => {
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
         await inventory.goToCart();
@@ -58,6 +58,7 @@ test.describe('E2E - Checkout', () => {
         await cart.removeItemByIndex(0);
         expect(await cart.countItems()).toBe(1);
     });
+
     test('E2E-04: cart badge updates when adding multiple items @e2e', async ({ page }) => {
         await inventory.addProductByIndex(0);
         await inventory.addProductByIndex(1);
