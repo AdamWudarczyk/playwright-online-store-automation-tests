@@ -27,24 +27,25 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 | SMK-04 | Empty fields validation |
 
 ## Project Structure
-playwright-online-store-automation-tests\
-│── allure-report\
-│── allure-results\
+```
+playwright-online-store-automation-tests
+│── allure-report/                   # Generated Allure HTML report
+│── allure-results/                  # Raw results consumed by Allure
 │── package.json                     # Project dependencies and scripts\
 │── playwright.config.js             # Global Playwright configuration\
 │── tests\
-│ ├── smoke                          # High-level tests verifying main flows\
+│ ├── smoke/                         # High-level tests verifying main flows\
 │ │ └── smoke-login.spec.js          # Smoke tests for login functionality\
-│ └── e2e \                          # Full end-to-end flows across the app\
-│ └── e2e-checkout-and-cart.spec.js \
-│── pages                           # Page Object Model (POM) classes\
+│ └── e2e/                           # Full end-to-end flows across the app\
+│ └── e2e-checkout-and-cart.spec.js  # Checkout & cart E2E scenarios
+│── pages/                           # Page Object Model (POM) classes\
 │ ├── LoginPage.js                   # Actions and selectors for Login page\
 │ ├── InventoryPage.js               # Product listing, sorting, inventory checks\
 │ ├── CartPage.js                    # Cart operations (add/remove/verify)\
 │ └── CheckoutPage.js                # Checkout steps, form filling, validation\
-│── /fixtures                        # Test data used across tests\
-└── users.json                        # Credentials for different user roles
-
+│── fixtures/                        # Test data used across tests\
+│└── users.json                      # Credentials for different user roles
+```
 
 ## How to run tests
 **Install dependencies**
