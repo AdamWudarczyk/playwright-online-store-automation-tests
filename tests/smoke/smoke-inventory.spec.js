@@ -21,4 +21,25 @@ test.describe('Smoke - Inventory', () => {
         const items = page.locator('.inventory_item');
         await expect(items).toHaveCount(6);
     });
+
+    test('SMK-06: sorting Z→A works @smoke', async ({ page }) => {
+        await loginPage.login(users.validUser.username, users.validUser.password);
+        await inventoryPage.assertOnInventoryPage();
+
+        await page.selectOption('.product_sort_container', 'za');
+
+        const names = await page.locator('.inventory_item_name').allTextContents();
+        const sorted = [...names].sort().reverse();
+        expect(names).toEqual(sorted);
+    });
+
+    test('SMK-7: adding item shows cart badge @smoke', async ({ page }) => {
+        await loginPage.login(users.validUser.username, users.validUser.password);
+        await inventoryPage.assertOnInventoryPage();
+
+        await page.locator('button.btn_inventory').first().click();
+        const badge = page.locator('.shopping_cart_badge');
+
+        await expect(badge).toHaveText('1');
+    });
 });
