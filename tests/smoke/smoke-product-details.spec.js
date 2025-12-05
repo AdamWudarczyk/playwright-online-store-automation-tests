@@ -3,7 +3,7 @@ import {LoginPage} from "../../pages/LoginPage";
 import {InventoryPage} from "../../pages/InventoryPage";
 import users from '../../fixtures/users.json' with { type: 'json' };
 
-test.describe('Smoke - Inventory', () => {
+test.describe('Smoke - Product Details', () => {
 
     let loginPage;
     let inventoryPage;
@@ -15,7 +15,7 @@ test.describe('Smoke - Inventory', () => {
         await loginPage.goto();
     });
 
-    test('SMK-06: product details open correctly @smoke', async ({page}) => {
+    test('SMK-08: product details open correctly @smoke', async ({page}) => {
         await loginPage.login(users.validUser.username, users.validUser.password);
         await expect(page).toHaveURL(/.*inventory\.html/);
 
@@ -26,24 +26,23 @@ test.describe('Smoke - Inventory', () => {
         await expect(detailsTitle).toHaveText(productTitle ?? '');
     });
 
-    test('SMK-07: sorting Z→A works @smoke', async ({ page }) => {
+    test('SMK-09: product image is displayed on details page @smoke', async ({ page }) => {
         await loginPage.login(users.validUser.username, users.validUser.password);
         await inventoryPage.assertOnInventoryPage();
 
-        await page.selectOption('.product_sort_container', 'za');
+        await page.locator('.inventory_item_name').first().click();
 
-        const names = await page.locator('.inventory_item_name').allTextContents();
-        const sorted = [...names].sort().reverse();
-        expect(names).toEqual(sorted);
+        const image = page.locator('.inventory_details_img');
+        await expect(image).toBeVisible();
     });
 
-    test('SMK-08: adding item shows cart badge @smoke', async ({ page }) => {
+    test('SMK-10: Back button returns to inventory page @smoke', async ({ page }) => {
         await loginPage.login(users.validUser.username, users.validUser.password);
         await inventoryPage.assertOnInventoryPage();
 
-        await page.locator('button.btn_inventory').first().click();
-        const badge = page.locator('.shopping_cart_badge');
+        await page.locator('.inventory_item_name').first().click();
+        await page.locator('#back-to-products').click();
 
-        await expect(badge).toHaveText('1');
+        await expect(page).toHaveURL(/.*inventory\.html/);
     });
 });
