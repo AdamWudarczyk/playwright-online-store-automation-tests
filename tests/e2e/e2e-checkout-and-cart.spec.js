@@ -70,5 +70,4 @@ test.describe('E2E - Checkout', () => {
         await cart.assertCartVisible();
         expect(await cart.countItems()).toBe(3);
     });
-
 });
