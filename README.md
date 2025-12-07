@@ -6,7 +6,8 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 - JavaScript (ES6)
 - Playwright Test Runner
 - Page Object Model (POM)
-- HTML Reports
+- HTML reports
+- Allure reports
 - JSON fixtures
 
 ## Test Coverage
@@ -17,16 +18,22 @@ Project created to practice E2E testing, Page Object Model design, and Playwrigh
 | E2E-02 | Checkout validation (missing required data) |
 | E2E-03 | Remove item from cart                       |
 | E2E-04 | Sorting products                            |
+| E2E-05 | Product details view and return to inventory|
 
 ### Smoke Tests
-| ID     | Name |
-|--------|------|
-| SMK-01 | Successful login (valid user) |
-| SMK-02 | Locked-out user cannot login |
-| SMK-03 | Invalid credentials validation |
-| SMK-04 | Empty fields validation |
-| SMK-05 | Inventory page loads key UI elements |
-| SMK-06 | Product details page opens correctly |
+| ID     | Name                                      |
+|--------|-------------------------------------------|
+| SMK-01 | Successful login (valid user)             |
+| SMK-02 | Locked-out user cannot login              |
+| SMK-03 | Invalid credentials validation            |
+| SMK-04 | Empty fields validation                   |
+| SMK-05 | Product details page opens correctly      |
+| SMK-06 | Sorting Z→A works                         |
+| SMK-07 | Adding item shows cart badge              |
+| SMK-08 | Product details open correctly            |
+| SMK-09 | Product image is displayed on details page|
+| SMK-10 | Back button returns to inventory page     |
+
 
 ## Project Structure
 ```
@@ -42,6 +49,7 @@ playwright-online-store-automation-tests
 │ │ └── smoke-product-details.spec.js   # Smoke tests verifying product details page
 │ └── e2e/                              # Full end-to-end flows across the app
 │ └── e2e-checkout-and-cart.spec.js     # Checkout & cart E2E scenarios
+│ └── e2e-product-browsing.spec.js      # Product browsing E2E scenarios
 │── pages/                              # Page Object Model (POM) classes
 │ ├── LoginPage.js                      # Actions and selectors for Login page
 │ ├── InventoryPage.js                  # Product listing, sorting, inventory checks
@@ -72,10 +80,6 @@ npx playwright test --grep @smoke
 ```bash
 npx playwright test --grep @e2e
 ```
-**Re-run only failed tests**
-```bash
-npx playwright test --last-failed
-```
 **Run tests in headed mode (browser visible)**
 ```bash
 npx playwright test --headed
@@ -93,7 +97,6 @@ npm run allure:report
 ```bash
 npm run allure:open
 ```
-
 **Debug mode**
 ```bash
 npx playwright test --debug
