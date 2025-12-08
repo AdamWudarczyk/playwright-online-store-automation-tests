@@ -57,6 +57,9 @@ playwright-online-store-automation-tests
 │ └── CheckoutPage.js                   # Checkout steps, form filling, validation
 │── fixtures/                           # Test data used across tests
 │└── users.json                         # Credentials for different user roles
+│── .github/                            # TBD
+│ ├── workflows/                        # TBD
+│ │ └── ui-tests.yml                    # CI workflow: automatic Playwright tests in GitHub Actions
 ```
 
 ## How to run tests
@@ -101,6 +104,9 @@ npm run allure:open
 ```bash
 npx playwright test --debug
 ```
+## Continuous Integration (GitHub Actions)
+The project uses GitHub Actions to automatically run Playwright tests on every push and pull request to the master branch.
+
 
 ## Contents
 This project will demonstrate:
@@ -109,3 +115,4 @@ This project will demonstrate:
 - Smoke testing
 - Selectors & assertions
 - Allure report
+- GitHub Actions
