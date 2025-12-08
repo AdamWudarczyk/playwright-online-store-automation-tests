@@ -2,7 +2,7 @@ name: UI Tests (Playwright – Online Store)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'tests/**'
       - 'pages/**'
@@ -11,7 +11,7 @@ on:
       - 'package-lock.json'
       - '.github/workflows/ui-tests.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'tests/**'
       - 'pages/**'
