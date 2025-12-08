@@ -57,8 +57,8 @@ playwright-online-store-automation-tests
 │ └── CheckoutPage.js                   # Checkout steps, form filling, validation
 │── fixtures/                           # Test data used across tests
 │└── users.json                         # Credentials for different user roles
-│── .github/                            # TBD
-│ ├── workflows/                        # TBD
+│── .github/                            
+│ ├── workflows/                        
 │ │ └── ui-tests.yml                    # CI workflow: automatic Playwright tests in GitHub Actions
 ```
 
