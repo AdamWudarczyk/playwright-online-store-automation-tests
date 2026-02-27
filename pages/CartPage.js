@@ -3,9 +3,11 @@ import { expect } from '@playwright/test';
 export class CartPage {
     constructor(page) {
         this.page = page;
-        this.cartItems = page.locator('.cart_item');
-        this.checkoutButton = page.locator('[data-test="checkout"]');
-        this.removeButtons = page.locator('[data-test^="remove-"]');
+        this.cartItems = page.locator(
+            '//div[contains(concat(" ", normalize-space(@class), " "), " cart_item ")]'
+        );
+        this.checkoutButton = page.locator('//button[@data-test="checkout"]');
+        this.removeButtons = page.locator('//*[starts-with(@data-test,"remove-")]');
     }
 
     async countItems() {

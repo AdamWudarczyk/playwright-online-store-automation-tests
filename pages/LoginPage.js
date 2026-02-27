@@ -7,10 +7,10 @@ export class LoginPage {
     constructor(page) {
         this.page = page;
         this.url = 'https://www.saucedemo.com/';
-        this.usernameInput = page.getByPlaceholder('Username');
-        this.passwordInput = page.getByPlaceholder('Password');
-        this.loginButton = page.getByRole('button', { name: 'Login' });
-        this.errorMessage = page.locator('[data-test="error"]');
+        this.usernameInput = page.locator('//input[@placeholder="Username"]');
+        this.passwordInput = page.locator('//input[@placeholder="Password"]');
+        this.loginButton = page.locator('//input[@type="submit" and @value="Login"]');
+        this.errorMessage = page.locator('//*[@data-test="error"]');
     }
 
     async goto() {

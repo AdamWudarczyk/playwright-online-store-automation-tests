@@ -8,8 +8,8 @@ export class InventoryPage {
      */
     constructor(page) {
         this.page = page;
-        this.inventoryList = page.locator('.inventory_list');
-        this.cartLink = page.locator('.shopping_cart_link');
+        this.inventoryList = page.locator('//div[contains(@class,"inventory_list")]');
+        this.cartLink = page.locator('//a[contains(@class,"shopping_cart_link")]');
     }
 
     async addProductByIndex(index) {
