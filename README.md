@@ -1,14 +1,21 @@
-# Online Store - Playwright E2E & Smoke Tests (JavaScript)
+# Online Store - Playwright E2E & Smoke Tests (TypeScript)
 Automated end-to-end and smoke tests for an online store web application (based on the SauceDemo demo store).
 Project created to practice E2E testing, Page Object Model design, and Playwright workflows.
 
 ## Tech Stack
-- JavaScript (ES6)
+- TypeScript
 - Playwright Test Runner
 - Page Object Model (POM)
 - HTML reports
 - Allure reports
 - JSON fixtures
+- GitHub Actions (CI)
+
+##  Recent Improvements
+- Migrated entire test suite from JavaScript to TypeScript
+- Introduced static typing for Page Objects and test data
+- Improved maintainability and type safety
+- Structured test layers: smoke vs e2e
 
 ## Test Coverage
 ### E2E Flow
@@ -41,7 +48,7 @@ playwright-online-store-automation-tests
 │── allure-report/                      # Generated Allure HTML report
 │── allure-results/                     # Raw results consumed by Allure
 │── package.json                        # Project dependencies and scripts
-│── playwright.config.js                # Global Playwright configuration
+│── playwright.config.ts                # Global Playwright configuration
 │── tests/                              # All test specifications
 │ ├── smoke/                            # High-level tests verifying main flows
 │ │ └── smoke-login.spec.js             # Smoke tests for login functionality
@@ -107,9 +114,7 @@ npx playwright test --debug
 ## Continuous Integration (GitHub Actions)
 The project uses GitHub Actions to automatically run Playwright tests on every push and pull request to the master branch.
 
-
-## Contents
-This project will demonstrate:
+## What This Project Demonstrates
 - Page Object Model
 - E2E flow testing
 - Smoke testing
