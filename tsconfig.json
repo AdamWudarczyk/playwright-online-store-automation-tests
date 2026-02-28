@@ -13,11 +13,14 @@
       "node",
       "@playwright/test"
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    "resolveJsonModule": true
   },
   "include": [
-    "playwright.config",
+    "playwright.config.ts",
     "pages/**/*.ts",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "fixtures/**/*.json"
   ]
 }
