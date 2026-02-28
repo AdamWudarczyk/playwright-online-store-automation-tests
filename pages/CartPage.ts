@@ -1,7 +1,12 @@
-import { expect } from '@playwright/test';
+import { expect, type Page, type Locator } from '@playwright/test';
 
 export class CartPage {
-    constructor(page) {
+    readonly page: Page;
+    readonly cartItems: Locator;
+    readonly checkoutButton: Locator;
+    readonly removeButtons: Locator;
+
+    constructor(page: Page) {
         this.page = page;
         this.cartItems = page.locator(
             '//div[contains(concat(" ", normalize-space(@class), " "), " cart_item ")]'
@@ -22,7 +27,7 @@ export class CartPage {
         await expect(this.cartItems.first()).toBeVisible();
     }
 
-    async removeItemByIndex(index) {
+    async removeItemByIndex(index: number) {
         await this.removeButtons.nth(index).click();
     }
 }
