@@ -6,7 +6,8 @@ on:
     paths:
       - 'tests/**'
       - 'pages/**'
-      - 'playwright.config.*'
+      - 'playwright.config.ts'
+      - 'tsconfig.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/ui-tests.yml'
@@ -15,7 +16,8 @@ on:
     paths:
       - 'tests/**'
       - 'pages/**'
-      - 'playwright.config.*'
+      - 'playwright.config.ts'
+      - 'tsconfig.json'
       - 'package.json'
       - 'package-lock.json'
 
