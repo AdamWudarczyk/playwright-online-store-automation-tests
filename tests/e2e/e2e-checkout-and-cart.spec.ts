@@ -1,15 +1,24 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage.js';
-import { InventoryPage } from '../../pages/InventoryPage.js';
-import { CartPage } from '../../pages/CartPage.js';
-import { CheckoutPage } from '../../pages/CheckoutPage.js';
-import users from '../../fixtures/users.json' with { type: 'json' };
+import { LoginPage } from '../../pages/LoginPage';
+import { InventoryPage } from '../../pages/InventoryPage';
+import { CartPage } from '../../pages/CartPage';
+import { CheckoutPage } from '../../pages/CheckoutPage';
+import users from '../../fixtures/users.json';
+
+type UserFixture = {
+    validUser: {
+      username: string;
+      password: string;
+    };
+};
+
+const typedUsers = users as UserFixture;
 
 test.describe('E2E - Checkout', () => {
-    let loginPage;
-    let inventory;
-    let cart;
-    let checkout;
+    let loginPage: LoginPage;
+    let inventory: InventoryPage;
+    let cart: CartPage;
+    let checkout: CheckoutPage;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
@@ -18,7 +27,7 @@ test.describe('E2E - Checkout', () => {
         checkout = new CheckoutPage(page);
 
         await loginPage.goto();
-        await loginPage.login(users.validUser.username, users.validUser.password);
+        await loginPage.login(typedUsers.validUser.username, typedUsers.validUser.password);
         await inventory.assertOnInventoryPage();
     });
 
